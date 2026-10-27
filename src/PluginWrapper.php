@@ -187,6 +187,9 @@ class PluginWrapper
     {
         $return = array();
         foreach ($paths as $path) {
+            if (!is_string($path) || $path === '') {
+                continue;
+            }
             if (!$this->filesystem->isAbsolutePath($path)) {
                 $path = getcwd().'/'.$path;
             }
